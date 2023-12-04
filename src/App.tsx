@@ -1,35 +1,22 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import "./App.css";
+import WorkList from "./go-work/components/WorkList";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [works,setWorks]=useState([
+    {id:1,companyName:'Digi',numberOfEmployee:3,position:'Frontend Developer',category:'Developer'},
+    {id:2,companyName:'Maxis',numberOfEmployee:6,position:'DevOps Engineer',category:'Cloud'},
+    {id:3,companyName:'Celcom',numberOfEmployee:7,position:'Backend Developer',category:'Developer'},
+    {id:4,companyName:'OneXOX',numberOfEmployee:1,position:'Cloud Engineer',category:'Cloud'},
+  ]);
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+    <WorkList works={works} onDelete={(id)=>setWorks(works.filter((e)=>e.id !== id))} >
+
+    </WorkList>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
