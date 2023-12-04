@@ -1,12 +1,20 @@
+import { useState } from "react";
 import "./App.css";
-import ExpandableText from "./components/ExpandableText";
+import WorkList from "./go-work/components/WorkList";
 
 function App() {
+  const [works,setWorks]=useState([
+    {id:1,companyName:'Digi',numberOfEmployee:3,position:'Frontend Developer',category:'Developer'},
+    {id:2,companyName:'Maxis',numberOfEmployee:6,position:'DevOps Engineer',category:'Cloud'},
+    {id:3,companyName:'Celcom',numberOfEmployee:7,position:'Backend Developer',category:'Developer'},
+    {id:4,companyName:'OneXOX',numberOfEmployee:1,position:'Cloud Engineer',category:'Cloud'},
+  ]);
+
   return (
     <>
-    <ExpandableText>
-      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta ipsum iste obcaecati, enim magni tempora placeat error necessitatibus sapiente iure nobis provident amet odit minus deleniti nihil possimus voluptate facere vero illum in laborum dolore quis voluptatem! Ipsa provident placeat vero ipsum quibusdam dolores porro ut doloremque quasi explicabo, enim ducimus qui dolore repellat nemo! Nihil, nostrum facilis? Harum necessitatibus temporibus, assumenda non numquam aut, fugit beatae accusantium, officia veniam ea accusamus possimus. Veritatis accusantium numquam dignissimos iste aliquid, fuga laboriosam est ut suscipit, corrupti sed praesentium. Facilis delectus tempora, error architecto, fugiat animi numquam corrupti nulla, eligendi amet rem?
-    </ExpandableText>
+    <WorkList works={works} onDelete={(id)=>setWorks(works.filter((e)=>e.id !== id))} >
+
+    </WorkList>
     </>
   );
 }
