@@ -2,6 +2,9 @@ import { useState } from "react";
 import "./App.css";
 import WorkList from "./go-work/components/WorkList";
 import WorkFilter from "./go-work/components/WorkFilter";
+import WorkForm from "./go-work/components/WorkForm";
+
+export const categories=['Developer','Cloud'];
 
 function App() {
   const [selectedCategory,setSelectedCategory]=useState('');
@@ -23,6 +26,11 @@ function App() {
     <WorkList works={visibleWorks} onDelete={(id)=>setWorks(works.filter((e)=>e.id !== id))} >
 
     </WorkList>
+
+    <div className="m-3">
+
+    <WorkForm></WorkForm>
+    </div>
     </>
   );
 }
