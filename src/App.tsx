@@ -4,7 +4,6 @@ import WorkList from "./go-work/components/WorkList";
 import WorkFilter from "./go-work/components/WorkFilter";
 import WorkForm from "./go-work/components/WorkForm";
 
-export const categories=['Developer','Cloud'];
 
 function App() {
   const [selectedCategory,setSelectedCategory]=useState('');
@@ -12,7 +11,7 @@ function App() {
     {id:1,companyName:'Digi',numberOfEmployee:3,position:'Frontend Developer',category:'Developer'},
     {id:2,companyName:'Maxis',numberOfEmployee:6,position:'DevOps Engineer',category:'Cloud'},
     {id:3,companyName:'Celcom',numberOfEmployee:7,position:'Backend Developer',category:'Developer'},
-    {id:4,companyName:'OneXOX',numberOfEmployee:1,position:'Cloud Engineer',category:'Cloud'},
+    {id:4,companyName:'OneXOX',numberOfEmployee:1,position:'Cloud Engineer',category:'Cloud'}
   ]);
 
   const visibleWorks=selectedCategory?works.filter(e=>e.category==selectedCategory):works
@@ -29,7 +28,7 @@ function App() {
 
     <div className="m-3">
 
-    <WorkForm></WorkForm>
+    <WorkForm onSubmit={(work)=>setWorks([...works,{...work,id:works.length+1}])}></WorkForm>
     </div>
     </>
   );
