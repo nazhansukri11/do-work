@@ -28,7 +28,7 @@ function App() {
 
     <div className="m-3">
 
-    <WorkForm onSubmit={(works)=>setWorks([...works)}></WorkForm>
+    <WorkForm onSubmit={(work)=>setWorks([...works,{...work,id:works.length+1}])}></WorkForm>
     </div>
     </>
   );

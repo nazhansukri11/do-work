@@ -9,7 +9,7 @@ interface Props{
 
 const schema=z.object({
   companyName:z.string().min(3).max(50),
-  numberOfEmployees:z.number().int(),
+  numberOfEmployee:z.number().int(),
   position:z.string().min(3).max(50),
   category:z.enum(categories)
 });
@@ -27,8 +27,8 @@ const WorkForm = ({onSubmit}:Props) => {
         </div>
         <div className="mb-3">
             <label htmlFor="" className="form-label">Number of Employee</label>
-            <input {...register('numberOfEmployees', { valueAsNumber: true } )} id="number-of-employee" type="number" className="form-control" />
-            {errors.numberOfEmployees&&<p className='text-danger'>{errors.numberOfEmployees.message}</p>}
+            <input {...register('numberOfEmployee', { valueAsNumber: true } )} id="number-of-employee" type="number" className="form-control" />
+            {errors.numberOfEmployee&&<p className='text-danger'>{errors.numberOfEmployee.message}</p>}
 
         </div>
         <div className="mb-3">
