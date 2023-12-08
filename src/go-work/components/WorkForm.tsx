@@ -1,4 +1,11 @@
+import {z} from 'zod';
 import { categories } from "../../App"
+
+z.object({
+  companyName:z.string().min(3).max(50),
+  numberOfEmployees:z.number().min(1).max(500),
+});
+
 const WorkForm = () => {
   return (
     <form>
