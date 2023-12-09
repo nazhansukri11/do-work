@@ -1,7 +1,7 @@
 interface Work {
   id: number;
   companyName: string;
-  numberOfEmployee: number;
+  numberOfVacancy: number;
   position: string;
   category: string;
 }
@@ -20,7 +20,7 @@ const WorkList = ({ works, onDelete }: Props) => {
         <thead>
           <tr>
             <th>Company Name</th>
-            <th>Number Of Employee</th>
+            <th>Number Of Vacancy</th>
             <th>Position</th>
             <th>Category</th>
             <th></th>
@@ -30,7 +30,7 @@ const WorkList = ({ works, onDelete }: Props) => {
           {works.map((work) => (
             <tr key={work.id}>
               <td>{work.companyName}</td>
-              <td>{work.numberOfEmployee}</td>
+              <td>{work.numberOfVacancy}</td>
               <td>{work.position}</td>
               <td>{work.category}</td>
               <td>
@@ -46,9 +46,9 @@ const WorkList = ({ works, onDelete }: Props) => {
         </tbody>
         <tfoot>
           <tr>
-            <td>Total Employee</td>
+            <td>Total Vacancy</td>
             <td>
-              {works.reduce((acc, work) => work.numberOfEmployee + acc, 0)}
+              {works.reduce((acc, work) => work.numberOfVacancy + acc, 0)}
             </td>
             <td></td>
             <td></td>
