@@ -19,14 +19,17 @@ function App() {
   return (
     
     <>
-    <div className="m-3">
+    <div className="m-3 mx-5">
     <WorkFilter onSelectCategory={(category)=>setSelectedCategory(category)}></WorkFilter>
     </div>
+    <div className="m-3 mx-5">
+
     <WorkList works={visibleWorks} onDelete={(id)=>setWorks(works.filter((e)=>e.id !== id))} >
 
     </WorkList>
+    </div>
 
-    <div className="m-3">
+    <div className="m-3 mx-5">
 
     <WorkForm onSubmit={(work)=>setWorks([...works,{...work,id:works.length+1}])}></WorkForm>
     </div>
