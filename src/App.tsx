@@ -1,35 +1,70 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import "./App.css";
+import WorkList from "./go-work/components/WorkList";
+import WorkFilter from "./go-work/components/WorkFilter";
+import WorkForm from "./go-work/components/WorkForm";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [selectedCategory, setSelectedCategory] = useState("");
+  const [works, setWorks] = useState([
+    {
+      id: 1,
+      companyName: "Digi",
+      numberOfVacancy: 3,
+      position: "Frontend Developer",
+      category: "Developer",
+    },
+    {
+      id: 2,
+      companyName: "Maxis",
+      numberOfVacancy: 6,
+      position: "DevOps Engineer",
+      category: "Cloud",
+    },
+    {
+      id: 3,
+      companyName: "Celcom",
+      numberOfVacancy: 7,
+      position: "Backend Developer",
+      category: "Developer",
+    },
+    {
+      id: 4,
+      companyName: "OneXOX",
+      numberOfVacancy: 1,
+      position: "Cloud Engineer",
+      category: "Cloud",
+    },
+  ]);
+
+  const visibleWorks = selectedCategory
+    ? works.filter((e) => e.category == selectedCategory)
+    : works;
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <h1 className="mx-5">Do Work</h1>
+      <div className="m-3 mx-5">
+        <WorkFilter
+          onSelectCategory={(category) => setSelectedCategory(category)}
+        ></WorkFilter>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
+      <div className="m-3 mx-5">
+        <WorkList
+          works={visibleWorks}
+          onDelete={(id) => setWorks(works.filter((e) => e.id !== id))}
+        ></WorkList>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+
+      <div className="m-3 mx-5">
+        <WorkForm
+          onSubmit={(work) =>
+            setWorks([...works, { ...work, id: works.length + 1 }])
+          }
+        ></WorkForm>
+      </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
